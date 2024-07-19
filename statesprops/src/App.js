@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Counter from './Counter';
+import Greeting from './Props.js';
+import Form from './Form.js';
+import GreetUser from './Greeting.js';
+import ComplexForm from './ComplexForm.js';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Counter />
+      <Greeting name="Collins"/>
+      <Greeting name="Alice"/>
+      <Form />
+      <GreetUser isLoggedIn={isLoggedIn} />
+      <button onClick={() => setIsLoggedIn(!isLoggedIn)}>
+        {isLoggedIn ? "Log out" : "Log in"}</button>
+      <ComplexForm />
     </div>
   );
 }
